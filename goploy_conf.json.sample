@@ -1,0 +1,12 @@
+{
+    "App": {
+        "Port": 8000
+    },
+    "Projects": [
+        {
+            "Path": "/path/to/your/project",
+            "Deploy": "/path/to/deploy/script arg1 arg2"
+        }
+    ]
+}
+
