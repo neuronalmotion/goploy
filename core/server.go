@@ -1,13 +1,19 @@
 package core
 
 import (
-    "net/http"
     "fmt"
+    "log"
+    "net/http"
 )
 
 func ServeHttp() {
     http.HandleFunc("/", handler)
-    http.ListenAndServe(fmt.Sprintf(":%v", GoployCtx.Cfg.App.Port), nil)
+    port := GoployCtx.Cfg.App.Port
+    log.Printf("Webserver listening on %v...", port)
+    err := http.ListenAndServe(fmt.Sprintf(":%v", port), nil)
+    if err != nil {
+        log.Fatal("ListenAndServe error: ", err)
+    }
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
