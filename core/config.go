@@ -6,6 +6,10 @@ import (
     "os"
 )
 
+const (
+    configFile string = "/home/robin/devel/go/src/github.com/neuronalmotion/goploy/goploy_conf.json"
+)
+
 var GoployCtx GoployContext
 
 func init() {
@@ -14,7 +18,7 @@ func init() {
     log.SetFlags(log.LstdFlags | log.Lshortfile)
 
     // load config file
-    file, err := os.Open("goploy_conf.json")
+    file, err := os.Open(configFile)
     decoder := json.NewDecoder(file)
     decoder.Decode(&GoployCtx.Cfg)
 
