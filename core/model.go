@@ -3,13 +3,13 @@ package core
 // God object to access important variables
 // you should put as little as you can here
 type GoployContext struct {
-    Cfg Config
+	Cfg Config
 }
 
 const (
-    LOG_SILENT int = iota
-    LOG_INFO
-    LOG_VERBOSE
+	LOG_SILENT int = iota
+	LOG_INFO
+	LOG_VERBOSE
 )
 
 // ----------------------------------------------------------------------------
@@ -17,16 +17,17 @@ const (
 // ----------------------------------------------------------------------------
 
 type Config struct {
-    App struct {
-        Port int            `json:"port"`
-        LogLevel int        `json:"log_level"`
-    }                       `json:"app"`
-    Projects []Project      `json:"projects"`
+	App struct {
+		Port     int `json:"port"`
+		LogLevel int `json:"log_level"`
+	} `json:"app"`
+	Projects []Project `json:"projects"`
 }
 
 type Project struct {
-    Path    string          `json:"path"`
-    Deploy  string          `json:"deploy"`
+	Url    string `json:"url"`
+	Path   string `json:"path"`
+	Deploy string `json:"deploy"`
 }
 
 // ----------------------------------------------------------------------------
@@ -34,10 +35,9 @@ type Project struct {
 // ----------------------------------------------------------------------------
 
 type PushEvent struct {
-    Ref         string       `json:"ref"`
-    Repository struct {
-        FullName    string   `json:"full_name"`
-        Url         string   `json:"url"`
-    }                        `json:"repository"`
+	Ref        string `json:"ref"`
+	Repository struct {
+		FullName string `json:"full_name"`
+		Url      string `json:"url"`
+	} `json:"repository"`
 }
-

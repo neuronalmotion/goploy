@@ -5,7 +5,8 @@
     },
     "projects": [
         {
-            "Path": "/path/to/your/project",
+            "url": "http://url/to/project/repo",
+            "path": "/path/to/your/project",
             "deploy": "/path/to/deploy/script arg1 arg2"
         }
     ]
