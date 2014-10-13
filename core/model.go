@@ -26,6 +26,7 @@ type Config struct {
 
 type Project struct {
 	Url    string `json:"url"`
+	Ref    string `json:"ref"`
 	Path   string `json:"path"`
 	Deploy string `json:"deploy"`
 }
