@@ -6,6 +6,7 @@ import (
     "io"
     "log"
     "net/http"
+    "strings"
 )
 
 func ServeHttp() {
@@ -19,7 +20,20 @@ func ServeHttp() {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
+    path := r.URL.Path
+    routed := false
+    if strings.HasPrefix(path, "deploy") {
+        routed = true
+        HandlePushEvent(w, r)
+    }
+
+    if !routed {
+        fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
+    }
+}
+
+func HandlePushEvent(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprint(w, "Deploy route")
 }
 
 func ParsePushEvent(stream io.ReadCloser) *PushEvent {

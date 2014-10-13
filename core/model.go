@@ -6,15 +6,22 @@ type GoployContext struct {
     Cfg Config
 }
 
+const (
+    LOG_SILENT int = iota
+    LOG_INFO
+    LOG_VERBOSE
+)
+
 // ----------------------------------------------------------------------------
 // goploy
 // ----------------------------------------------------------------------------
 
 type Config struct {
     App struct {
-        Port    int         `json:"port"`
+        Port int            `json:"port"`
+        LogLevel int        `json:"log_level"`
     }                       `json:"app"`
-    Projects    []Project   `json:"projects"`
+    Projects []Project      `json:"projects"`
 }
 
 type Project struct {
