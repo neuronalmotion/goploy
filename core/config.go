@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	configFile string = "/home/robin/devel/go/src/github.com/neuronalmotion/goploy/goploy_conf.json"
+	configFile string = "goploy_conf.json"
 )
 
 var GoployCtx GoployContext

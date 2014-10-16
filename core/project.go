@@ -41,4 +41,3 @@ func (p *Project) DeployCmd() error {
 	log.Printf("%s", out)
 	return err
 }
-
