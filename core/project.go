@@ -10,7 +10,7 @@ type Project struct {
 	Url    string `json:"url"`
 	Ref    string `json:"ref"`
 	Path   string `json:"path"`
-	Deploy string `json:"deploy"`
+	Deploy string `json:"deploy,omitempty"`
 }
 
 func (p *Project) UpdateRepo() error {
