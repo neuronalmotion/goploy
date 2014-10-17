@@ -28,6 +28,9 @@ func (p *Project) UpdateRepo() error {
 }
 
 func (p *Project) DeployCmd() error {
+    if p.Deploy == "" {
+        return nil
+    }
 	parts := strings.Fields(p.Deploy)
 	head := parts[0]
 	parts = parts[1:len(parts)]

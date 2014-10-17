@@ -20,14 +20,15 @@ func HandleDeploy(w http.ResponseWriter, r *http.Request) {
 	// parse json
 	pe, err := parsePushEvent(r.Body)
 	if err != nil {
-		fmt.Fprintf(w, "Deploy KO: %v\n", err)
+		log.Printf("Deploy KO (parsing pushevent): %v\n", err)
+		fmt.Fprintf(w, "Deploy KO (parsing pushevent): %v\n", err)
 		return
 	}
 
 	// match to project
 	p, err := pushEventProject(pe)
 	if err != nil {
-		fmt.Fprintf(w, "Deploy KO: %v\n", err)
+		fmt.Fprintf(w, "Deploy KO (finding project): %v\n", err)
 		return
 	}
 
@@ -37,13 +38,13 @@ func HandleDeploy(w http.ResponseWriter, r *http.Request) {
 	}
 	err = p.UpdateRepo()
 	if err != nil {
-		fmt.Fprintf(w, "Deploy KO: %v\n", err)
+		fmt.Fprintf(w, "Deploy KO (updating project repo): %v\n", err)
 		return
 	}
 
 	err = p.DeployCmd()
 	if err != nil {
-		fmt.Fprintf(w, "Deploy KO: %v\n", err)
+		fmt.Fprintf(w, "Deploy KO (running deploy script): %v\n", err)
 		return
 	}
 
