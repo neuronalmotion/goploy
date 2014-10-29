@@ -7,25 +7,29 @@ import (
 	"os"
 )
 
+var GoployCtx GoployContext
+
 const (
 	configFile string = "goploy_conf.json"
 )
 
-var conf *string = flag.String("conf", configFile, "path to config file")
+var flagconf *string = flag.String("conf", configFile, "path to config file")
 
-var GoployCtx GoployContext
+func init() {
+	log.SetPrefix("goploy ")
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
+}
 
 func ParseArgs() {
 	flag.Parse()
 }
 
-func LoadConfig() {
-	// configure logging
-	log.SetPrefix("goploy ")
-	log.SetFlags(log.LstdFlags | log.Lshortfile)
-
-	// load config file
-	file, err := os.Open(*conf)
+func LoadConfig(conf string) {
+	config := conf
+	if config == "" {
+		config = *flagconf
+	}
+	file, err := os.Open(config)
 	decoder := json.NewDecoder(file)
 	decoder.Decode(&GoployCtx.Cfg)
 

@@ -1,0 +1,15 @@
+{
+    "app": {
+        "port": 8000,
+        "log_level": 2
+    },
+    "projects": [
+        {
+            "url": "https://github.com/baxterthehacker/public-repo",
+            "ref": "refs/heads/gh-pages",
+            "path": "/home/robin/devel/public-repo",
+            "deploy": "echo hello world"
+        }
+    ]
+}
+

@@ -6,6 +6,6 @@ import (
 
 func main() {
 	core.ParseArgs()
-	core.LoadConfig()
+	core.LoadConfig("") // we use what has been parsed as conf path
 	core.ServeHttp()
 }
