@@ -5,5 +5,7 @@ import (
 )
 
 func main() {
+	core.ParseArgs()
+	core.LoadConfig()
 	core.ServeHttp()
 }
