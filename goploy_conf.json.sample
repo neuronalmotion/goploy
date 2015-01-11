@@ -8,6 +8,8 @@
             "url": "http://url/to/project/repo",
             "ref": "refs/heads/master",
             "path": "/path/to/your/project",
+            "uid": 0,
+            "gid": 0,
             "deploy": "/path/to/deploy/script arg1 arg2"
         }
     ]
