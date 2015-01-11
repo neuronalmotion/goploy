@@ -9,6 +9,7 @@ import (
 
 type Project struct {
 	Url    string `json:"url"`
+	Remote string `json:"remote,omitempty"` //default value = origin
 	Ref    string `json:"ref"`
 	Path   string `json:"path"`
 	Uid    int `json:"uid,omitempty"`
@@ -17,9 +18,14 @@ type Project struct {
 }
 
 func (p *Project) UpdateRepo() error {
+
+    if p.Remote == "" {
+        p.Remote = "origin"
+    }
+
 	cmd := exec.Cmd{
 		Path: "/usr/bin/git",
-		Args: []string{"git", "pull", p.Url},
+		Args: []string{"git", "pull", p.Remote},
 		Dir:  p.Path,
 	}
 
